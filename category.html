@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* 保留捲軸空間，避免展開/收合時頁面左右跳動 */
-        :root { scrollbar-gutter: stable; }
+        :root { scrollbar-gutter: stable both-edges; }
 
         body {
             background: #f8f9fa;
@@ -40,7 +40,7 @@
         <div class="d-flex align-items-center mb-4">
             <div>
                 <h1 class="h3 mb-0">記帳分類列表</h1>
-                <p class="text-muted mb-0 small">分類範例：大分類與對應小分類</p>
+                <p class="text-muted mb-0 small">大分類與對應小分類</p>
             </div>
             <div class="ms-auto">
                 <input id="filter" class="form-control form-control-sm search-input" placeholder="搜尋分類或項目 (如：早餐、咖啡)">
