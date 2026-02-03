@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>記帳分類列表</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 保留捲軸空間，避免展開/收合時頁面左右跳動 */
+        :root { scrollbar-gutter: stable; }
+
+        body {
+            background: #f8f9fa;
+        }
+
+        .category-card {
+            border: 0;
+            border-radius: .75rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .emoji {
+            font-size: 1.25rem;
+            margin-right: .5rem;
+        }
+
+        .sub-item {
+            cursor: default;
+        }
+
+        .search-input {
+            max-width: 420px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="d-flex align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-0">記帳分類列表</h1>
+                <p class="text-muted mb-0 small">分類範例：大分類與對應小分類</p>
+            </div>
+            <div class="ms-auto">
+                <input id="filter" class="form-control form-control-sm search-input" placeholder="搜尋分類或項目 (如：早餐、咖啡)">
+            </div>
+        </div>
+
+        <div class="card category-card p-3 mb-4">
+            <div class="accordion" id="categoriesAccordion">
+                <!-- 餐飲 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFood">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFood" aria-expanded="false" aria-controls="collapseFood">
+                            <span class="emoji">🍽</span> 餐飲
+                        </button>
+                    </h2>
+                    <div id="collapseFood" class="accordion-collapse collapse" aria-labelledby="headingFood"
+                        data-bs-parent="#categoriesAccordion">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush" data-category="餐飲">
+                                <li class="list-group-item sub-item">早餐</li>
+                                <li class="list-group-item sub-item">午餐</li>
+                                <li class="list-group-item sub-item">晚餐</li>
+                                <li class="list-group-item sub-item">便當</li>
+                                <li class="list-group-item sub-item">麥當勞</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 飲料 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingDrink">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseDrink" aria-expanded="false" aria-controls="collapseDrink">
+                            <span class="emoji">🧋</span> 飲料
+                        </button>
+                    </h2>
+                    <div id="collapseDrink" class="accordion-collapse collapse" aria-labelledby="headingDrink"
+                        data-bs-parent="#categoriesAccordion">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush" data-category="飲料">
+                                <li class="list-group-item sub-item">咖啡</li>
+                                <li class="list-group-item sub-item">奶茶</li>
+                                <li class="list-group-item sub-item">手搖</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 交通 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTransport">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTransport" aria-expanded="false" aria-controls="collapseTransport">
+                            <span class="emoji">🚇</span> 交通
+                        </button>
+                    </h2>
+                    <div id="collapseTransport" class="accordion-collapse collapse" aria-labelledby="headingTransport"
+                        data-bs-parent="#categoriesAccordion">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush" data-category="交通">
+                                <li class="list-group-item sub-item">捷運</li>
+                                <li class="list-group-item sub-item">公車</li>
+                                <li class="list-group-item sub-item">計程車</li>
+                                <li class="list-group-item sub-item">Uber</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 生活 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingLife">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLife" aria-expanded="false" aria-controls="collapseLife">
+                            <span class="emoji">🛒</span> 生活
+                        </button>
+                    </h2>
+                    <div id="collapseLife" class="accordion-collapse collapse" aria-labelledby="headingLife"
+                        data-bs-parent="#categoriesAccordion">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush" data-category="生活">
+                                <li class="list-group-item sub-item">全聯</li>
+                                <li class="list-group-item sub-item">家樂福</li>
+                                <li class="list-group-item sub-item">超市</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 帳單 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingBills">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseBills" aria-expanded="false" aria-controls="collapseBills">
+                            <span class="emoji">💡</span> 帳單
+                        </button>
+                    </h2>
+                    <div id="collapseBills" class="accordion-collapse collapse" aria-labelledby="headingBills"
+                        data-bs-parent="#categoriesAccordion">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush" data-category="帳單">
+                                <li class="list-group-item sub-item">電費</li>
+                                <li class="list-group-item sub-item">水費</li>
+                                <li class="list-group-item sub-item">瓦斯</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 娛樂 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFun">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFun" aria-expanded="false" aria-controls="collapseFun">
+                            <span class="emoji">🎬</span> 娛樂
+                        </button>
+                    </h2>
+                    <div id="collapseFun" class="accordion-collapse collapse" aria-labelledby="headingFun"
+                        data-bs-parent="#categoriesAccordion">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush" data-category="娛樂">
+                                <li class="list-group-item sub-item">Netflix</li>
+                                <li class="list-group-item sub-item">電影</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="text-muted small">可直接點擊分類展開或收合。此頁面使用 Bootstrap 建置。</footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 簡單搜尋功能：依分類或子項目過濾並自動展開符合的分類
+        const filterInput = document.getElementById('filter');
+        filterInput.addEventListener('input', () => {
+            const q = filterInput.value.trim().toLowerCase();
+            const accordion = document.getElementById('categoriesAccordion');
+            const items = accordion.querySelectorAll('.accordion-item');
+
+            items.forEach(item => {
+                const headerText = item.querySelector('.accordion-button').innerText.toLowerCase();
+                const list = item.querySelectorAll('.list-group-item');
+                let match = headerText.includes(q) && q !== '' ? true : false;
+
+                list.forEach(li => {
+                    const t = li.innerText.toLowerCase();
+                    const show = q === '' || t.includes(q) || headerText.includes(q);
+                    li.style.display = show ? '' : 'none';
+                    if (show) match = true;
+                });
+
+                // 顯示或隱藏整個分類項目
+                item.style.display = match ? '' : 'none';
+
+                // 若有符合，展開該 accordion
+                const collapse = item.querySelector('.accordion-collapse');
+                const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapse, { toggle: false });
+                if (q === '') {
+                    bsCollapse.hide();
+                } else if (match) {
+                    bsCollapse.show();
+                } else {
+                    bsCollapse.hide();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
